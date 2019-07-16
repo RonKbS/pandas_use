@@ -1,5 +1,5 @@
 import pandas
-
+import matplotlib
 
 data = pandas.read_csv('brain_size.csv', sep=';', na_values=".")
 # print(data)
@@ -24,8 +24,15 @@ cos_t = np.cos(t)
 
 # split dataframe on values of categorical variables
 groupby_gender = data.groupby('Gender')
-for gender, value in groupby_gender['VIQ']:
-    print((gender, value.mean(), value.count()))
+# for gender, value in groupby_gender['VIQ']:
+#     print((gender, value.mean(), value.count()))
 
-for gender, value in groupby_gender['VIQ']:
-    print(gender, value)
+# for gender, value in groupby_gender['VIQ']:
+#     print(gender, value)
+
+from pandas import plotting
+# plotting.scatter_matrix(data[['Weight', 'Height', 'MRI_Count']])
+plotting.scatter_matrix(data[['PIQ', 'VIQ', 'FSIQ']])
+
+# matplotlib used to show plotting but is not needed if using jupyter notebooks
+matplotlib.pyplot.show()
