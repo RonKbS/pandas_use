@@ -3,6 +3,8 @@
 # View functions are mapped to one or more route URLs so that Flask knows what logic to
 # execute when a client requests a given URL
 
+from flask import render_template
+
 from app import app
 
 # decorators, a unique feature of the Python language
@@ -12,4 +14,21 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return "Hello, World!"
+    user = {'username': 'ron'}
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    return render_template('index.html', title='Home', user=user, posts=posts)
+
+# render_template() takes a template filename and a variable list of template arguments
+# and returns the same template, but with all the placeholders in it replaced with actual values
+# render_template() function invokes the Jinja2 template engine that comes bundled with the Flask framework.
+# Jinja2 substitutes {{ ... }} blocks with the corresponding values, given by the arguments provided in the
+# render_template() call.
