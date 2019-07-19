@@ -8,13 +8,17 @@
 # The application then imports the routes module, which doesn't exist yet.
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-from app import routes
+from app import routes, models
 #  The app package is defined by the app directory and the __init__.py script,
 # and is referenced in the from app import routes statement. The app variable is defined
 # as an instance of class Flask in the __init__.py script, which makes it a member of the app package.

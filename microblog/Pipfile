@@ -9,6 +9,11 @@ verify_ssl = true
 flask = "*"
 python-dotenv = "*"
 flask-wtf = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-login = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
